@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚽ Pênalti Matemático – Números Naturais</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Tela Inicial -->
+  <div id="tela-inicio" class="tela ativa">
+    <div class="card-inicio">
+      <h1>⚽ Pênalti Matemático</h1>
+      <p class="subtitulo">Números Naturais • Operações Fundamentais</p>
+      <p class="descricao">
+        Acerte as contas para marcar o gol!<br>
+        Treine adição, subtração, multiplicação, divisão e expressões.
+      </p>
+      <div class="niveis">
+        <button class="btn-nivel" data-nivel="facil">🟢 Fácil<br><small>Adição e Subtração</small></button>
+        <button class="btn-nivel" data-nivel="medio">🟡 Médio<br><small>Multiplicação e Divisão</small></button>
+        <button class="btn-nivel" data-nivel="dificil">🔴 Difícil<br><small>Expressões Numéricas</small></button>
+      </div>
+      <button id="btn-como-jogar" class="btn-secundario">Como Jogar?</button>
+    </div>
+  </div>
+
+  <!-- Modal Como Jogar -->
+  <div id="modal-como" class="modal oculto">
+    <div class="modal-conteudo">
+      <h2>📋 Como Jogar</h2>
+      <ol>
+        <li>Escolha o nível de dificuldade.</li>
+        <li>Você terá <strong>5 cobranças de pênalti</strong>.</li>
+        <li>Responda corretamente a conta para <strong>marcar o gol</strong> ⚽</li>
+        <li>Errou? O goleiro defende! 🧤</li>
+        <li>Ao final, veja quantos gols você fez!</li>
+      </ol>
+      <p><strong>Dica:</strong> Lembre da ordem das operações:<br>
+      1º Parênteses → 2º × e ÷ → 3º + e −</p>
+      <button id="fechar-modal" class="btn-principal">Entendi!</button>
+    </div>
+  </div>
+
+  <!-- Tela do Jogo -->
+  <div id="tela-jogo" class="tela">
+    <header class="topo-jogo">
+      <div class="placar">
+        <span>Gols: <strong id="gols">0</strong></span>
+        <span>Pênalti: <strong id="penalti-atual">1</strong>/5</span>
+      </div>
+      <div class="nivel-atual" id="nivel-exibido">Nível: Fácil</div>
+    </header>
+
+    <div class="campo">
+      <div class="gol" id="gol">
+        <div class="trave esquerda"></div>
+        <div class="trave direita"></div>
+        <div class="trave cima"></div>
+        <div class="rede"></div>
+        <div class="goleiro" id="goleiro">🧤</div>
+      </div>
+      <div class="bola" id="bola">⚽</div>
+      <div class="jogador" id="jogador">👟</div>
+    </div>
+
+    <div class="area-pergunta">
+      <p class="pergunta" id="pergunta">Quanto é 7 + 5?</p>
+      <div class="opcoes" id="opcoes">
+        <!-- opções geradas via JS -->
+      </div>
+      <p class="feedback" id="feedback"></p>
+    </div>
+  </div>
+
+  <!-- Tela Resultado -->
+  <div id="tela-resultado" class="tela">
+    <div class="card-resultado">
+      <h2 id="titulo-resultado">Fim de Jogo!</h2>
+      <div class="estatisticas">
+        <p>Você marcou <strong id="gols-finais">0</strong> de 5 gols!</p>
+        <div id="estrelas" class="estrelas"></div>
+        <p id="mensagem-final"></p>
+      </div>
+      <button id="btn-jogar-novamente" class="btn-principal">Jogar Novamente</button>
+      <button id="btn-menu" class="btn-secundario">Voltar ao Menu</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
