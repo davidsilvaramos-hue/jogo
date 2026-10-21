@@ -1,0 +1,439 @@
+/* ===== RESET E BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(180deg, #87CEEB 0%, #4CAF50 70%, #2E7D32 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  color: #1a1a1a;
+}
+
+/* ===== TELAS ===== */
+.tela {
+  display: none;
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
+  animation: fadeIn 0.4s ease;
+}
+
+.tela.ativa {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== TELA INICIAL ===== */
+.card-inicio {
+  background: white;
+  border-radius: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+
+.card-inicio h1 {
+  font-size: 2rem;
+  color: #1565C0;
+  margin-bottom: 8px;
+}
+
+.subtitulo {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+.descricao {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 28px;
+  color: #333;
+}
+
+.niveis {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.btn-nivel {
+  background: #f5f5f5;
+  border: 3px solid transparent;
+  border-radius: 16px;
+  padding: 14px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-nivel:hover {
+  transform: scale(1.03);
+  border-color: #1565C0;
+  background: #E3F2FD;
+}
+
+.btn-nivel small {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* ===== BOTÕES ===== */
+.btn-principal {
+  background: #1565C0;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 32px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.btn-principal:hover {
+  background: #0D47A1;
+  transform: scale(1.02);
+}
+
+.btn-secundario {
+  background: transparent;
+  color: #1565C0;
+  border: 2px solid #1565C0;
+  border-radius: 50px;
+  padding: 12px 28px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btn-secundario:hover {
+  background: #E3F2FD;
+}
+
+/* ===== MODAL ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.modal.oculto {
+  display: none;
+}
+
+.modal-conteudo {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 24px;
+  max-width: 400px;
+  width: 100%;
+  text-align: left;
+}
+
+.modal-conteudo h2 {
+  text-align: center;
+  color: #1565C0;
+  margin-bottom: 16px;
+}
+
+.modal-conteudo ol {
+  padding-left: 22px;
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+.modal-conteudo p {
+  background: #E8F5E9;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+/* ===== TELA DO JOGO ===== */
+.topo-jogo {
+  background: white;
+  border-radius: 16px;
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-weight: 700;
+}
+
+.placar span {
+  margin-right: 16px;
+}
+
+.nivel-atual {
+  background: #E3F2FD;
+  color: #1565C0;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+/* Campo de futebol */
+.campo {
+  position: relative;
+  height: 220px;
+  background: linear-gradient(180deg, #66BB6A 0%, #43A047 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.15);
+  border: 4px solid white;
+}
+
+.gol {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 90px;
+  background: rgba(255,255,255,0.15);
+}
+
+.trave {
+  position: absolute;
+  background: white;
+}
+
+.trave.esquerda {
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+}
+
+.trave.direita {
+  right: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+}
+
+.trave.cima {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+}
+
+.rede {
+  position: absolute;
+  inset: 6px 6px 0 6px;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 8px,
+    rgba(255,255,255,0.3) 8px,
+    rgba(255,255,255,0.3) 10px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 8px,
+    rgba(255,255,255,0.3) 8px,
+    rgba(255,255,255,0.3) 10px
+  );
+}
+
+.goleiro {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.4rem;
+  transition: left 0.4s ease, transform 0.3s;
+  z-index: 5;
+}
+
+.goleiro.defendeu {
+  animation: defender 0.5s ease;
+}
+
+@keyframes defender {
+  0% { transform: translateX(-50%) scale(1); }
+  40% { transform: translateX(-50%) scale(1.3); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+.bola {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  z-index: 10;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bola.chute-gol {
+  bottom: 70px;
+  transform: translateX(-50%) scale(0.7);
+}
+
+.bola.chute-fora {
+  bottom: 100px;
+  left: 20%;
+  transform: scale(0.6);
+  opacity: 0.4;
+}
+
+.jogador {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  z-index: 4;
+}
+
+/* Área da pergunta */
+.area-pergunta {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.pergunta {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1565C0;
+  margin-bottom: 18px;
+  min-height: 40px;
+}
+
+.opcoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.btn-opcao {
+  background: #E3F2FD;
+  border: 3px solid #90CAF9;
+  border-radius: 14px;
+  padding: 16px;
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0D47A1;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-opcao:hover:not(:disabled) {
+  background: #BBDEFB;
+  transform: scale(1.04);
+}
+
+.btn-opcao:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.btn-opcao.correta {
+  background: #C8E6C9;
+  border-color: #43A047;
+  color: #1B5E20;
+}
+
+.btn-opcao.errada {
+  background: #FFCDD2;
+  border-color: #E53935;
+  color: #B71C1C;
+}
+
+.feedback {
+  margin-top: 14px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  min-height: 28px;
+}
+
+.feedback.acerto {
+  color: #2E7D32;
+}
+
+.feedback.erro {
+  color: #C62828;
+}
+
+/* ===== TELA RESULTADO ===== */
+.card-resultado {
+  background: white;
+  border-radius: 24px;
+  padding: 36px 24px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+
+.card-resultado h2 {
+  font-size: 1.8rem;
+  color: #1565C0;
+  margin-bottom: 20px;
+}
+
+.estatisticas {
+  margin-bottom: 24px;
+}
+
+.estatisticas p {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.estrelas {
+  font-size: 2.4rem;
+  letter-spacing: 6px;
+  margin: 12px 0;
+}
+
+#mensagem-final {
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Responsivo */
+@media (max-width: 400px) {
+  .card-inicio h1 { font-size: 1.6rem; }
+  .pergunta { font-size: 1.3rem; }
+  .btn-opcao { font-size: 1.15rem; padding: 14px; }
+  .campo { height: 190px; }
+}
